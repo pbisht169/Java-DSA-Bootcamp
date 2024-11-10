@@ -1,12 +1,19 @@
 package ArrayQuestions;
-
+/**
+ * In Linear search Time complexity
+ * 1. Best case is constant that is O(1), means we find the element at first position of array. Means it needs only 1 comparison.
+ *      That means it does not matter the size of array.
+ * 2. Worst case is, O(N), when we don't find the element in entire array after iterating(Scanning) through the whole array. Means we need to make N comparisons.
+ * 3. Average Case is O(N).
+ */
 public class LinearSearchArray {
 
     public static void main(String[] args) {
         int[] arr = { 1,3,2,4,5,10, 9};
         System.out.print(linearSearch(arr, 30));
     }
-    //    search in the array, return the index if found otherwise return -1;
+
+    //    Search in the array, return the index if found otherwise return -1;
     static int linearSearch(int[] arr, int target) {
         if(arr.length == 0) {
             return -1;
@@ -18,6 +25,7 @@ public class LinearSearchArray {
         }
         return -1;
     }
+
     //    Return the index value if found otherwise return the MAX value of INT
     static int linearSearch2(int[] arr, int target) {
         if(arr.length == 0) {
