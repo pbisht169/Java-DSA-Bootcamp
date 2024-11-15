@@ -26,6 +26,6 @@ public class SmallestCharacter {
                 end = mid - 1;
             }
         }
-        return start % arr.length;
+        return arr[start % arr.length];
     }
 }
