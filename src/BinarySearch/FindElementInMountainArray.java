@@ -1,12 +1,51 @@
 package BinarySearch;
-//Mountain array also called Bio-tonic array
-public class PeakIndexInMountainArray {
+
+public class FindElementInMountainArray {
     public static void main(String[] args) {
-        int[] arr = new int[]{1,2,4,6,8,7,5,0};
-        int target = 8;
-        int index= peakIndexInMountainArray(arr);
+        int[] arr = new int[]{1,2,3,4,5,6,7,8,9};
+        int target = 5;
+
+        int index = findPeak(arr, target);
         System.out.println(index);
     }
+
+    static int findPeak(int[] arr, int target) {
+        int peakIndex= peakIndexInMountainArray(arr);
+        int firstTry = orderAgnosticBinarySearch(arr, 0, peakIndex, target );
+        if(firstTry == -1){
+            firstTry = orderAgnosticBinarySearch(arr, peakIndex+1, arr.length-1, target);
+        }
+        return firstTry;
+    }
+
+    static int orderAgnosticBinarySearch(int[] arr, int start, int end, int target) {
+//        Check whether the given array in Ascending or Descending
+        boolean isAsc = arr[start] < arr[end];
+//        int start = 0, end = arr.length - 1;
+        while(start <= end) {
+//          int middle = (start + end)/2 , it could be that (start + end) can exceed the MAX_INTEGER range. So below method is used.
+
+            int middle = start + (end - start)/2;
+            if(arr[middle] == target) {
+                return middle;
+            }
+            if(isAsc) {
+                if(arr[middle] > target) {
+                    end = middle - 1;
+                } else  {
+                    start = middle + 1;
+                }
+            } else {
+                if(arr[middle] < target) {
+                    end = middle - 1;
+                } else {
+                    start = middle + 1;
+                }
+            }
+        }
+        return -1;
+    }
+
     static int peakIndexInMountainArray(int[] arr) {
         int start = 0, end = arr.length - 1;
         while(start < end) {
