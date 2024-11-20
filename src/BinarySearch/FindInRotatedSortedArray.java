@@ -1,9 +1,8 @@
 package BinarySearch;
 
-public class FindInRotatedSrotedArray {
+public class FindInRotatedSortedArray {
     public static void main(String[] args) {
-    int[] arr = {3,5,1};
-
+        int[] arr = {3,5,1};
 
         int target = 3;
         System.out.println(search(arr, target));
@@ -16,6 +15,7 @@ public class FindInRotatedSrotedArray {
 //        If array is not Rotated then do the normal binary Search
             return binarySearch(arr, target, 0, arr.length-1);
         } else {
+//            If our pivot element itself the target element
             if(arr[pivotIndex] == target){
                 return pivotIndex;
             }
